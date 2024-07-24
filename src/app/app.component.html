@@ -1,0 +1,62 @@
+<!-- w3-content defines a container for fixed size centered content, 
+and is wrapped around the whole page content, except for the footer in this example -->
+<div class="w3-content" style="max-width: 1400px">
+  <app-header></app-header>
+
+  <!-- Grid -->
+  <div class="w3-row">
+    <!-- Blog entries -->
+    <div class="w3-col l8 s12 main">
+      <!-- Blog entry -->
+      @for (item of dataArray; track $index) {
+      <app-blog-main [blog]="item"></app-blog-main>
+    }
+      <!-- END BLOG ENTRIES -->
+    </div>
+
+    <!-- Introduction menu -->
+    <div class="w3-col l4">
+      <app-side-bar-content></app-side-bar-content>
+      <!-- About Card -->
+      <hr />
+
+      <!-- Posts -->
+      <div class="w3-card w3-margin">
+        <div class="w3-container w3-padding">
+          <h4>Popular Posts</h4>
+        </div>
+        <ul class="w3-ul w3-hoverable w3-white">
+          @for (item of popularPosts; track $index) {
+            <app-blog-side-bar-posts [moreBlogs]="item"></app-blog-side-bar-posts>
+            <hr class="my-0"/>
+          }
+        </ul>
+      </div>
+      <hr />
+
+      <!-- Labels / tags -->
+      <div class="w3-card w3-margin">
+        <div class="w3-container w3-padding">
+          <h4>Tags</h4>
+        </div>
+        <div class="w3-container w3-white">
+          <p>
+            <span class="w3-tag w3-black w3-margin-bottom">Travel</span>
+           @for (item of sideTags; track $index) {
+             <app-blog-tags [tags]="item"></app-blog-tags>
+           }
+         </p>
+        </div>
+      </div>
+
+      <!-- END Introduction Menu -->
+    </div>
+
+    <!-- END GRID -->
+  </div>
+  <br />
+
+  <!-- END w3-content -->
+</div>
+
+<app-footer></app-footer>
